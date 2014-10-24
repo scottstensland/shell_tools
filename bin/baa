@@ -1,0 +1,54 @@
+#!/usr/bin/env bash 
+
+# create a timestamped tarball of current dir, including children dirs, skipping over exclude patterned filenames and
+# put into directory at sibling of current dir
+#
+#	usage :		cd cool_webgl   # or any dir we wish to backup
+#				baa  # we are currently in some directory we want to backup ... lets say its called cool_webgl
+#
+#				backup_cool_webgl/cool_webgl_20141023_124107.tar.xz   #  this is the resultant output file ... a tarball 
+#				backup_cool_webgl/cool_webgl_20141024_124107.tar.xz
+#
+#				to decompress our freshly created backup file as listed above 
+#				now cd into some dir where we wish to expand the archive file and issue :
+#
+#				tar xvf backup_cool_webgl/cool_webgl_20141024_124107.tar.xz
+#
+#				cool_webgl   #  this dir will appear which will contain exact copy of original dir structure save for
+#							    the files which we excluded ... below excludes audio media files which end with .wav
+#
+#		enjoy - Scott Stensland
+
+
+curr_date=`date '+%Y%m%d_%H%M%S'`
+
+curr_pwd=`pwd`
+
+curr_basename=`basename $curr_pwd`
+
+echo curr_basename $curr_basename
+
+curr_parentdir=`dirname $curr_pwd`
+
+echo curr_parentdir $curr_parentdir
+
+curr_backupdir=${curr_parentdir}/backup_${curr_basename}
+
+echo curr_backupdir $curr_backupdir
+
+cd ..
+
+echo $PWD
+
+mkdir -p ${curr_backupdir}
+
+target_tarball=${curr_backupdir}/${curr_basename}_${curr_date}.tar.xz
+
+echo target_tarball $target_tarball
+
+echo "tar --exclude=*.wav --exclude=.git --exclude=node_modules -Jcf ${target_tarball}  ${curr_basename}"
+      tar --exclude=*.wav --exclude=.git --exclude=node_modules -Jcf ${target_tarball}  ${curr_basename}
+
+ls -la ${target_tarball}
+cd ${curr_pwd}
+
