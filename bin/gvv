@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#	download youtube video just given token from its URL
+#
+#	usage:      getvv JlwIqXlZp7M
+#
+
+echo "youtube-dl -c -l  http://www.youtube.com/watch?v=$1"
+      youtube-dl -c -l  http://www.youtube.com/watch?v=$1
+
+

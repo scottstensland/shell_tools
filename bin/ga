@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#
+#	get audio from video file
+#
+#	usage:   getv http://www.youtube.com/watch?v=tM7Krp9e9ZM
+#
+
+echo "youtube-dl -c -l --extract-audio --audio-quality 0  $1"
+      youtube-dl -c -l --extract-audio --audio-quality 0  $1
+
+

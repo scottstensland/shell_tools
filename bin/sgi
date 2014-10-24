@@ -1,0 +1,17 @@
+#! /bin/bash
+
+#  IMPORTANT - in addition to below put this into ~/.bashrc  
+#           alias sgi='  . sgi $1 '
+#
+#     in order to make the color come through
+
+#	simple wrapper to show a colorized grep -i on supplied search stringPattern
+#   trolling through alphabetical sort of files in current dir
+
+stringPattern=$1
+
+
+# ls -latr | grep --color=auto -i $stringPattern
+ls -latr | grep -i $stringPattern
+
+

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#	download video from sites like : vimeo, youtube, ... and many others
+#
+#	usage:   getv http://www.youtube.com/watch?v=tM7Krp9e9ZM
+#
+
+echo "youtube-dl -c -l  $1"
+      youtube-dl -c -l  $1
+
+
